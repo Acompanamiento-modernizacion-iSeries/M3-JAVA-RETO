@@ -96,39 +96,47 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
+                    espacioMenu();
                     System.out.print("Ingrese el monto a depositar: ");
                     monto = leerBigDecimal();
-                    cuenta.depositoDesdeSuccursal(monto);
+                    cuenta.depositoDesdeSucursal(monto);
                     break;
                 case 2:
+                    espacioMenu();
                     System.out.print("Ingrese el monto a depositar: ");
                     monto = leerBigDecimal();
                     cuenta.depositoDesdeCajero(monto);
                     break;
                 case 3:
+                    espacioMenu();
                     System.out.print("Ingrese el monto a depositar: ");
                     monto = leerBigDecimal();
                     cuenta.depositoDesdeOtraCuenta(monto);
                     break;
                 case 4:
+                    espacioMenu();
                     System.out.print("Ingrese el monto de la compra: ");
                     monto = leerBigDecimal();
                     cuenta.compraEstablecimientoFisico(monto);
                     break;
                 case 5:
+                    espacioMenu();
                     System.out.print("Ingrese el monto de la compra: ");
                     monto = leerBigDecimal();
                     cuenta.compraPaginaWeb(monto);
                     break;
                 case 6:
+                    espacioMenu();
                     System.out.print("Ingrese el monto a retirar: ");
                     monto = leerBigDecimal();
                     cuenta.retiroCajero(monto);
                     break;
                 case 7:
+                    espacioMenu();
                     System.out.println("Saldo actual: " + cuenta.getSaldo());
                     break;
                 case 8:
+                    espacioMenu();
                     System.out.println("Últimas 5 transacciones:");
                     cuenta.getUltimasTransacciones(5).forEach(System.out::println);
                     break;
@@ -142,7 +150,7 @@ public class Menu {
     }
 
     private void listarClientes() {
-        List<Cliente> clientes = banco.getClientes();
+        List<Cliente> clientes = banco.obtenerTodosLosClientes();
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados en el banco.");
         } else {
@@ -179,5 +187,9 @@ public class Menu {
 
     private String leerString() {
         return scanner.nextLine().trim();
+    }
+
+    private void espacioMenu(){
+        System.out.print("\n**********************\n");
     }
 }

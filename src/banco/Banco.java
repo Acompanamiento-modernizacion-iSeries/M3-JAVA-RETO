@@ -1,38 +1,36 @@
 package banco;
 
+import db.ClienteDB;
+import db.TransaccionDB;
+import clientes.Cliente;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
-import clientes.Cliente;
-import cuentas.CuentaBasica;
-import cuentas.CuentaPremium;
-
 public class Banco {
-    private List<Cliente> clientes;
+    private ClienteDB clienteDB;
+    private TransaccionDB transaccionDB;
 
-    public Banco() {
-        this.clientes = new ArrayList<>();
+    public Banco(ClienteDB clienteDB, TransaccionDB transaccionDB) {
+        this.clienteDB = clienteDB;
+        this.transaccionDB = transaccionDB;
     }
-
     public void agregarCliente(String nombre, String id, String tipoCuenta, BigDecimal saldoInicial) {
         Cliente cliente;
+
         if (tipoCuenta.equalsIgnoreCase("B")) {
-            cliente = new Cliente(nombre, id, new CuentaBasica(id, saldoInicial));
+            cliente = new Cliente(nombre, id, new cuentas.CuentaBasica(id, saldoInicial));
         } else {
-            cliente = new Cliente(nombre, id, new CuentaPremium(id, saldoInicial));
+            cliente = new Cliente(nombre, id, new cuentas.CuentaPremium(id, saldoInicial));
         }
-        clientes.add(cliente);
+
+        clienteDB.agregarCliente(cliente);
     }
 
     public Cliente buscarCliente(String id) {
-        return clientes.stream()
-                .filter(cliente -> cliente.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+        return clienteDB.buscarClientePorId(id);
     }
 
-    public List<Cliente> getClientes() {
-        return new ArrayList<>(clientes);
+    public List<Cliente> obtenerTodosLosClientes() {
+        return clienteDB.obtenerTodosLosClientes();
     }
 }
