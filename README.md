@@ -1,13 +1,13 @@
 # M3-JAVA-RETO
 
-# Reto: Aplicación de Gestión de Cuenta Bancaria
+# Reto: Aplicación de Gestión de banco.Cuenta Bancaria
 >**Larry M. Ramírez - Coach Técnico**
 ## Objetivo
 El objetivo de esta aplicación es crear un sistema que permita la gestión de cuentas bancarias, implementando los conceptos de Programación Orientada a Objetos y estructuras de datos en memoria.
 
 ## Funcionalidades Principales
 1. **Cuentas Bancarias:**
-	-   Debes crear una clase abstracta `Cuenta` con los siguientes atributos:
+	-   Debes crear una clase abstracta `banco.Cuenta` con los siguientes atributos:
 	    -   `saldo`: saldo global de la cuenta.
 	    -   `numeroCuenta`: identificador único de la cuenta.
 	-   A partir de esta clase crear dos subclases:
