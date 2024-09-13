@@ -1,0 +1,20 @@
+@startuml
+Class Banco{
+}
+
+Banco <--> Cuenta
+Class Cuenta {
+}
+
+Cuenta <--> CuentaBasica
+Class CuentaBasica{
+}
+
+Cuenta <--> CuentaPremium
+Class CuentaPremium{
+}
+Banco <--> Transaccion
+Transaccion <--> Cuenta
+Class Transaccion{
+}
+@enduml
